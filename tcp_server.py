@@ -13,7 +13,13 @@ server_socket.bind(server_address) # socket addressing
 server_socket.listen(1)
 
 print('Server is listening on', server_address)
-  try:
+try:
+   while True:
+    # Wait for a client to connect
+    client_socket, client_address = server_socket.accept()
+    print('Client connected:', client_address)
+    
+    try:
         # Receive data from the client
         data = client_socket.recv(1024)
         decoded_data = data.decode()
